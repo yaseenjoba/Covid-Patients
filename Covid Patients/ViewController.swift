@@ -229,7 +229,6 @@ class ViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSour
             let button = NSButton(title: label, target: self, action: nil)
             button.setButtonType(.switch)
             button.tag = test.rawValue
-            print(button.tag)
             button.translatesAutoresizingMaskIntoConstraints = false
             testTypeFilterStack.addArrangedSubview(button)
         }

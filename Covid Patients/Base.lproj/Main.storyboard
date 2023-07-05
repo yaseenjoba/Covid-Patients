@@ -686,7 +686,7 @@
         <scene sceneID="Gx7-zr-clZ">
             <objects>
                 <viewController storyboardIdentifier="AddPatientViewController" id="N3V-8z-gpc" customClass="AddPatientViewController" customModule="Covid_Patients" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" appearanceType="aqua" translatesAutoresizingMaskIntoConstraints="NO" id="WfK-hL-gBD">
+                    <view key="view" identifier="addPatients" appearanceType="aqua" translatesAutoresizingMaskIntoConstraints="NO" id="WfK-hL-gBD">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="300"/>
                         <subviews>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="g2a-dl-IGZ">
@@ -735,7 +735,7 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Bl0-fM-dNb">
+                            <textField identifier="nameField" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Bl0-fM-dNb">
                                 <rect key="frame" x="174" y="209" width="223" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="Hfx-wj-hl0"/>
@@ -968,7 +968,7 @@
                                                                 </textFieldCell>
                                                             </textField>
                                                             <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2tu-CR-VLq">
-                                                                <rect key="frame" x="110" y="-4" width="117" height="22"/>
+                                                                <rect key="frame" x="103" y="-4" width="117" height="22"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="110" id="0aI-1A-CLH"/>
                                                                 </constraints>
@@ -1407,7 +1407,7 @@
                                 <segmentedCell key="cell" borderStyle="border" alignment="left" style="smallSquare" trackingMode="momentary" id="Oks-1R-FiX">
                                     <font key="font" metaFont="system"/>
                                     <segments>
-                                        <segment image="NSAddTemplate" width="32"/>
+                                        <segment label="add" image="NSAddTemplate" width="32"/>
                                         <segment image="NSRemoveTemplate" width="32" tag="1"/>
                                     </segments>
                                 </segmentedCell>
@@ -1415,7 +1415,7 @@
                                     <action selector="addDeleteAction:" target="XfG-lQ-9wD" id="YiG-fo-4F3"/>
                                 </connections>
                             </segmentedControl>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Qlx-LE-cLY">
+                            <button identifier="details" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Qlx-LE-cLY">
                                 <rect key="frame" x="143" y="13" width="80" height="32"/>
                                 <buttonCell key="cell" type="push" title="Details " bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="3Cs-ou-6ds">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
