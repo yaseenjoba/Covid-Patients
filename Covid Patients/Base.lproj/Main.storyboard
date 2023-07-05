@@ -968,7 +968,7 @@
                                                                 </textFieldCell>
                                                             </textField>
                                                             <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2tu-CR-VLq">
-                                                                <rect key="frame" x="103" y="-4" width="117" height="22"/>
+                                                                <rect key="frame" x="110" y="-4" width="117" height="22"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="110" id="0aI-1A-CLH"/>
                                                                 </constraints>
@@ -1321,7 +1321,7 @@
                                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                             <prototypeCellViews>
                                                                 <tableCellView id="zik-OH-cGh">
-                                                                    <rect key="frame" x="207.5" y="0.0" width="125" height="17"/>
+                                                                    <rect key="frame" x="208" y="0.0" width="125" height="17"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                 </tableCellView>
                                                             </prototypeCellViews>
@@ -1415,6 +1415,16 @@
                                     <action selector="addDeleteAction:" target="XfG-lQ-9wD" id="YiG-fo-4F3"/>
                                 </connections>
                             </segmentedControl>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Qlx-LE-cLY">
+                                <rect key="frame" x="143" y="13" width="80" height="32"/>
+                                <buttonCell key="cell" type="push" title="Details " bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="3Cs-ou-6ds">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="detailsClicked:" target="XfG-lQ-9wD" id="Wsa-Ed-UnA"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="i7x-km-aOK" firstAttribute="top" secondItem="RGx-En-NeR" secondAttribute="bottom" constant="10" id="2tw-SY-UMo"/>
@@ -1425,6 +1435,8 @@
                             <constraint firstAttribute="trailing" secondItem="RGx-En-NeR" secondAttribute="trailing" id="SxN-XG-vlE"/>
                             <constraint firstItem="Dik-03-zs7" firstAttribute="top" secondItem="RGx-En-NeR" secondAttribute="bottom" constant="10" id="UjW-Sb-u3f"/>
                             <constraint firstItem="i7x-km-aOK" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Dik-03-zs7" secondAttribute="trailing" constant="5" id="X7Q-ur-LzS"/>
+                            <constraint firstItem="Qlx-LE-cLY" firstAttribute="leading" secondItem="Xn7-OQ-86E" secondAttribute="trailing" constant="21" id="YEv-bT-cB9"/>
+                            <constraint firstAttribute="bottom" secondItem="Qlx-LE-cLY" secondAttribute="bottom" constant="20" symbolic="YES" id="fpI-Xd-YMS"/>
                             <constraint firstItem="RGx-En-NeR" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="jwp-H3-iJL"/>
                             <constraint firstAttribute="bottom" secondItem="RGx-En-NeR" secondAttribute="bottom" constant="50" id="rqM-xs-880"/>
                             <constraint firstItem="Dik-03-zs7" firstAttribute="leading" secondItem="t0O-Io-Rm4" secondAttribute="leading" id="upF-0q-rYk"/>

@@ -19,6 +19,8 @@
 		3057628C2A4F474D0089C9F9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3057628A2A4F474D0089C9F9 /* Main.storyboard */; };
 		3059E0AA2A55545E00211F76 /* AppCommonComponents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3059E0A92A55545E00211F76 /* AppCommonComponents.framework */; };
 		3059E0AB2A55545E00211F76 /* AppCommonComponents.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3059E0A92A55545E00211F76 /* AppCommonComponents.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3059E0AE2A5573A400211F76 /* DetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3059E0AD2A5573A400211F76 /* DetailsView.xib */; };
+		3059E0B02A5573B900211F76 /* DetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3059E0AF2A5573B900211F76 /* DetailsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -49,6 +51,8 @@
 		3057628B2A4F474D0089C9F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3057628D2A4F474D0089C9F9 /* Covid_Patients.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Covid_Patients.entitlements; sourceTree = "<group>"; };
 		3059E0A92A55545E00211F76 /* AppCommonComponents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppCommonComponents.framework; path = Frameworks/AppCommonComponents.framework; sourceTree = "<group>"; };
+		3059E0AD2A5573A400211F76 /* DetailsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailsView.xib; sourceTree = "<group>"; };
+		3059E0AF2A5573B900211F76 /* DetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +92,8 @@
 				3011DD392A52C05C00BD9CB9 /* PatientsViewModel.swift */,
 				305762882A4F474D0089C9F9 /* Assets.xcassets */,
 				3057628A2A4F474D0089C9F9 /* Main.storyboard */,
+				3059E0AD2A5573A400211F76 /* DetailsView.xib */,
+				3059E0AF2A5573B900211F76 /* DetailsView.swift */,
 				3011DD3B2A52D02E00BD9CB9 /* AddPatientViewController.swift */,
 				3052E8052A51BDC1009398CD /* CustomCell.swift */,
 				3052E8012A51BA67009398CD /* PatientModel.swift */,
@@ -167,6 +173,7 @@
 			files = (
 				305762892A4F474D0089C9F9 /* Assets.xcassets in Resources */,
 				3057628C2A4F474D0089C9F9 /* Main.storyboard in Resources */,
+				3059E0AE2A5573A400211F76 /* DetailsView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -179,6 +186,7 @@
 			files = (
 				3052E8002A51A4D3009398CD /* TestTypeEnum.swift in Sources */,
 				305762872A4F474C0089C9F9 /* ViewController.swift in Sources */,
+				3059E0B02A5573B900211F76 /* DetailsView.swift in Sources */,
 				305762852A4F474C0089C9F9 /* AppDelegate.swift in Sources */,
 				3052E8022A51BA67009398CD /* PatientModel.swift in Sources */,
 				3052E8062A51BDC1009398CD /* CustomCell.swift in Sources */,
