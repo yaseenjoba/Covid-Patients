@@ -80,6 +80,16 @@ class ViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSour
             }
         }
     }
+    @IBAction func detailsClicked(_ sender: NSButton) {
+        guard let row = lastRowSelected else{
+            return
+        }
+        var view: DetailsView = DetailsView.createFromNib()
+        view.name = patientViewModel.patients[row].name
+        var viewController = NSViewController()
+        viewController.view = view
+        self.presentAsSheet(viewController)
+    }
     // MARK: - Public functions
     func numberOfRows(in tableView: NSTableView) -> Int {
         return patientViewModel.patients.count
@@ -215,7 +225,7 @@ class ViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSour
     private func filtersSectionSetup(){
         testTypeFilterStack.arrangedSubviews.forEach({ $0.removeFromSuperview() })
         for test in TestType.allCases {
-            var label = test.longText + " (\(test.shortText))"
+            let label = test.longText + " (\(test.shortText))"
             let button = NSButton(title: label, target: self, action: nil)
             button.setButtonType(.switch)
             button.tag = test.rawValue
