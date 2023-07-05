@@ -1,0 +1,11 @@
+framework module AppCommonComponents {
+  umbrella header "AppCommonComponents.h"
+
+  export *
+  module * { export * }
+}
+
+module AppCommonComponents.Swift {
+  header "AppCommonComponents-Swift.h"
+  requires objc
+}

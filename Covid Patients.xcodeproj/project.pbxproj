@@ -7,19 +7,48 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3011DD3A2A52C05C00BD9CB9 /* PatientsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3011DD392A52C05C00BD9CB9 /* PatientsViewModel.swift */; };
+		3011DD3C2A52D02E00BD9CB9 /* AddPatientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3011DD3B2A52D02E00BD9CB9 /* AddPatientViewController.swift */; };
+		3052E8002A51A4D3009398CD /* TestTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3052E7FF2A51A4D3009398CD /* TestTypeEnum.swift */; };
+		3052E8022A51BA67009398CD /* PatientModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3052E8012A51BA67009398CD /* PatientModel.swift */; };
+		3052E8042A51BB17009398CD /* TestStatusEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3052E8032A51BB17009398CD /* TestStatusEnum.swift */; };
+		3052E8062A51BDC1009398CD /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3052E8052A51BDC1009398CD /* CustomCell.swift */; };
 		305762852A4F474C0089C9F9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305762842A4F474C0089C9F9 /* AppDelegate.swift */; };
 		305762872A4F474C0089C9F9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305762862A4F474C0089C9F9 /* ViewController.swift */; };
 		305762892A4F474D0089C9F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 305762882A4F474D0089C9F9 /* Assets.xcassets */; };
 		3057628C2A4F474D0089C9F9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3057628A2A4F474D0089C9F9 /* Main.storyboard */; };
+		3059E0AA2A55545E00211F76 /* AppCommonComponents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3059E0A92A55545E00211F76 /* AppCommonComponents.framework */; };
+		3059E0AB2A55545E00211F76 /* AppCommonComponents.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3059E0A92A55545E00211F76 /* AppCommonComponents.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		3059E0AC2A55545E00211F76 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				3059E0AB2A55545E00211F76 /* AppCommonComponents.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		3011DD392A52C05C00BD9CB9 /* PatientsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientsViewModel.swift; sourceTree = "<group>"; };
+		3011DD3B2A52D02E00BD9CB9 /* AddPatientViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPatientViewController.swift; sourceTree = "<group>"; };
+		3052E7FF2A51A4D3009398CD /* TestTypeEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTypeEnum.swift; sourceTree = "<group>"; };
+		3052E8012A51BA67009398CD /* PatientModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientModel.swift; sourceTree = "<group>"; };
+		3052E8032A51BB17009398CD /* TestStatusEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestStatusEnum.swift; sourceTree = "<group>"; };
+		3052E8052A51BDC1009398CD /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		305762812A4F474C0089C9F9 /* Covid Patients.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Covid Patients.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		305762842A4F474C0089C9F9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		305762862A4F474C0089C9F9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		305762882A4F474D0089C9F9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3057628B2A4F474D0089C9F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3057628D2A4F474D0089C9F9 /* Covid_Patients.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Covid_Patients.entitlements; sourceTree = "<group>"; };
+		3059E0A92A55545E00211F76 /* AppCommonComponents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppCommonComponents.framework; path = Frameworks/AppCommonComponents.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -27,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3059E0AA2A55545E00211F76 /* AppCommonComponents.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -38,6 +68,7 @@
 			children = (
 				305762832A4F474C0089C9F9 /* Covid Patients */,
 				305762822A4F474C0089C9F9 /* Products */,
+				3059E0A82A55545D00211F76 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,11 +85,25 @@
 			children = (
 				305762842A4F474C0089C9F9 /* AppDelegate.swift */,
 				305762862A4F474C0089C9F9 /* ViewController.swift */,
+				3011DD392A52C05C00BD9CB9 /* PatientsViewModel.swift */,
 				305762882A4F474D0089C9F9 /* Assets.xcassets */,
 				3057628A2A4F474D0089C9F9 /* Main.storyboard */,
+				3011DD3B2A52D02E00BD9CB9 /* AddPatientViewController.swift */,
+				3052E8052A51BDC1009398CD /* CustomCell.swift */,
+				3052E8012A51BA67009398CD /* PatientModel.swift */,
+				3052E8032A51BB17009398CD /* TestStatusEnum.swift */,
+				3052E7FF2A51A4D3009398CD /* TestTypeEnum.swift */,
 				3057628D2A4F474D0089C9F9 /* Covid_Patients.entitlements */,
 			);
 			path = "Covid Patients";
+			sourceTree = "<group>";
+		};
+		3059E0A82A55545D00211F76 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3059E0A92A55545E00211F76 /* AppCommonComponents.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,6 +116,7 @@
 				3057627D2A4F474C0089C9F9 /* Sources */,
 				3057627E2A4F474C0089C9F9 /* Frameworks */,
 				3057627F2A4F474C0089C9F9 /* Resources */,
+				3059E0AC2A55545E00211F76 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -131,8 +177,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3052E8002A51A4D3009398CD /* TestTypeEnum.swift in Sources */,
 				305762872A4F474C0089C9F9 /* ViewController.swift in Sources */,
 				305762852A4F474C0089C9F9 /* AppDelegate.swift in Sources */,
+				3052E8022A51BA67009398CD /* PatientModel.swift in Sources */,
+				3052E8062A51BDC1009398CD /* CustomCell.swift in Sources */,
+				3011DD3A2A52C05C00BD9CB9 /* PatientsViewModel.swift in Sources */,
+				3011DD3C2A52D02E00BD9CB9 /* AddPatientViewController.swift in Sources */,
+				3052E8042A51BB17009398CD /* TestStatusEnum.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,6 +324,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
@@ -279,6 +335,7 @@
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
+					"$(PROJECT_DIR)/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.aurora.Covid-Patients";
@@ -297,6 +354,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
@@ -304,6 +365,7 @@
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
+					"$(PROJECT_DIR)/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.aurora.Covid-Patients";

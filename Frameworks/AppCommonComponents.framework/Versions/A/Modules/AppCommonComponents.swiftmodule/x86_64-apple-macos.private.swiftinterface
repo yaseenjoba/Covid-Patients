@@ -1,0 +1,427 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.7.1 (swiftlang-5.7.1.135.3 clang-1400.0.29.51)
+// swift-module-flags: -target x86_64-apple-macos11.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name AppCommonComponents
+// swift-module-flags-ignorable: -enable-bare-slash-regex
+@_exported import AppCommonComponents
+import Cocoa
+import Foundation
+import Swift
+import _Concurrency
+import _StringProcessing
+public enum LogLevel : Swift.Int, Swift.CustomStringConvertible {
+  case verbose
+  case debug
+  case info
+  case warning
+  case error
+  case fatal
+  case off
+  public var description: Swift.String {
+    get
+  }
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+extension AppCommonComponents.LogLevel : Swift.Comparable {
+  public static func < (lhs: AppCommonComponents.LogLevel, rhs: AppCommonComponents.LogLevel) -> Swift.Bool
+}
+public struct Log {
+  public typealias Message = () -> Swift.String
+  public static func verbose(_ message: @autoclosure () -> Swift.String, file: Swift.StaticString = #file, function: Swift.StaticString = #function, line: Swift.UInt = #line)
+  public static func debug(_ message: @autoclosure () -> Swift.String, file: Swift.StaticString = #file, function: Swift.StaticString = #function, line: Swift.UInt = #line)
+  public static func info(_ message: @autoclosure () -> Swift.String, file: Swift.StaticString = #file, function: Swift.StaticString = #function, line: Swift.UInt = #line)
+  public static func warning(_ message: @autoclosure () -> Swift.String, file: Swift.StaticString = #file, function: Swift.StaticString = #function, line: Swift.UInt = #line)
+  public static func error(_ message: @autoclosure () -> Swift.String, file: Swift.StaticString = #file, function: Swift.StaticString = #function, line: Swift.UInt = #line)
+  public static func fatal(_ message: @autoclosure () -> Swift.String, file: Swift.StaticString = #file, function: Swift.StaticString = #function, line: Swift.UInt = #line)
+  public static func assert(_ condition: @autoclosure () -> Swift.Bool, _ message: @autoclosure () -> Swift.String, _ level: AppCommonComponents.LogLevel = .warning, file: Swift.StaticString = #file, function: Swift.StaticString = #function, line: Swift.UInt = #line)
+}
+extension AppKit.NSView {
+  public enum ViewSide {
+    case left, right, top, bottom
+    public static func == (a: AppKit.NSView.ViewSide, b: AppKit.NSView.ViewSide) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) dynamic public var viewBackgroundColor: AppKit.NSColor? {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) public func setBorder(with color: AppKit.NSColor, borderWidth: CoreFoundation.CGFloat)
+  @_Concurrency.MainActor(unsafe) public func setBorder(toSide side: AppKit.NSView.ViewSide, withColor color: AppKit.NSColor, andThickness thickness: CoreFoundation.CGFloat)
+  @_Concurrency.MainActor(unsafe) public func setCorner(withRadius radius: CoreFoundation.CGFloat, mask: QuartzCore.CACornerMask)
+  @_Concurrency.MainActor(unsafe) public func setCorner(withRadius radius: CoreFoundation.CGFloat)
+  @_Concurrency.MainActor(unsafe) public func setShadow(shadowOpacity: Swift.Float, shadowColor: AppKit.NSColor, shadowOffset: CoreFoundation.CGSize, shadowRadius: CoreFoundation.CGFloat)
+  @_Concurrency.MainActor(unsafe) public func firstSubview<T>(withType type: T.Type, ignoreView: AppKit.NSView) -> AppKit.NSView?
+}
+extension Swift.String {
+  public func leftPadding(toTalWidth width: Swift.UInt, withPad paddingString: Swift.String) -> Swift.String
+  public func substring(start: Swift.Int, end: Swift.Int) -> Swift.String
+  public func appendingPathComponent(path: Swift.String) -> Swift.String
+}
+extension Swift.String {
+  public var hexToDecimal: Swift.UInt64? {
+    get
+  }
+  public var toDecimal: Swift.UInt64? {
+    get
+  }
+  public func padString(with character: Swift.Character, toLength length: Swift.UInt) -> Swift.String
+  public func chopStringPrefix(_ count: Swift.Int = 1) -> Swift.String
+}
+extension Swift.UInt64 {
+  public var decimalToHex: Swift.String {
+    get
+  }
+  public func decimalToHex(withDigitsCount digitsCounts: Swift.UInt) -> Swift.String
+}
+public protocol NibLoaded {
+  var viewIdentifier: Swift.String { get }
+  func loadNib()
+}
+extension AppCommonComponents.NibLoaded where Self : AppKit.NSView {
+  public var viewIdentifier: Swift.String {
+    get
+  }
+  public func loadNib()
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class GridClipTableView : AppKit.NSTableView {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func drawGrid(inClipRect clipRect: Foundation.NSRect)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame frameRect: Foundation.NSRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class ExpandedPopUpButton : AppKit.NSPopUpButton {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var intrinsicContentSize: Foundation.NSSize {
+    @objc get
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame buttonFrame: Foundation.NSRect, pullsDown flag: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame frameRect: Foundation.NSRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+extension AppKit.NSColor {
+  public func toHexString() -> Swift.String
+  convenience public init(hexString: Swift.String)
+}
+public typealias LayoutYAxisAnchor = (anchor: AppKit.NSLayoutAnchor<AppKit.NSLayoutYAxisAnchor>, constant: CoreFoundation.CGFloat)
+public typealias LayoutXAxisAnchor = (anchor: AppKit.NSLayoutAnchor<AppKit.NSLayoutXAxisAnchor>, constant: CoreFoundation.CGFloat)
+extension AppKit.NSView {
+  @_Concurrency.MainActor(unsafe) public func anchor(top: AppCommonComponents.LayoutYAxisAnchor? = nil, bottom: AppCommonComponents.LayoutYAxisAnchor? = nil, leading: AppCommonComponents.LayoutXAxisAnchor? = nil, trailing: AppCommonComponents.LayoutXAxisAnchor? = nil)
+  @_Concurrency.MainActor(unsafe) public func anchor(centerY: AppCommonComponents.LayoutYAxisAnchor? = nil, centerX: AppCommonComponents.LayoutXAxisAnchor? = nil, width: CoreFoundation.CGFloat? = nil, height: CoreFoundation.CGFloat? = nil)
+  @_Concurrency.MainActor(unsafe) public func anchor(width: CoreFoundation.CGFloat? = nil, height: CoreFoundation.CGFloat? = nil)
+  @_Concurrency.MainActor(unsafe) public func addConstraint(attribute attr1: AppKit.NSLayoutConstraint.Attribute, relatedBy relation: AppKit.NSLayoutConstraint.Relation = .equal, toItem view2: Any? = nil, attribute attr2: AppKit.NSLayoutConstraint.Attribute, multiplier: CoreFoundation.CGFloat = 1.0, constant: CoreFoundation.CGFloat) -> AppKit.NSLayoutConstraint
+}
+extension Foundation.FileManager {
+  public func moveFile(atPath: Swift.String, toPath: Swift.String) -> Swift.Error?
+  public func copyFile(atPath: Swift.String, toPath: Swift.String) -> Swift.Error?
+  public func createDirectoryIfNeeded(atPath: Swift.String) -> Swift.Error?
+  public func removeAllFiles(inDirectory path: Swift.String) -> Swift.Error?
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class ClickableLabel : AppKit.NSTextField {
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var enableHighlightedLabel: Swift.Bool
+  @_Concurrency.MainActor(unsafe) open var insets: Foundation.NSEdgeInsets {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) open var disabledTextColor: AppKit.NSColor {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) open var enabledTextColor: AppKit.NSColor {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var alignmentRectInsets: Foundation.NSEdgeInsets {
+    @objc get
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var isEnabled: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func mouseDown(with event: AppKit.NSEvent)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func resetCursorRects()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func updateTrackingAreas()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func mouseEntered(with _: AppKit.NSEvent)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func mouseExited(with _: AppKit.NSEvent)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame frameRect: Foundation.NSRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @IBDesignable @_Concurrency.MainActor(unsafe) open class HoverCellView : AppKit.NSTableCellView {
+  @_Concurrency.MainActor(unsafe) open var cellHighlightColor: AppKit.NSColor?
+  @_Concurrency.MainActor(unsafe) open var cellBackgroundColor: AppKit.NSColor?
+  @_Concurrency.MainActor(unsafe) open var cellTextColor: AppKit.NSColor?
+  @_Concurrency.MainActor(unsafe) open var cellImageColor: AppKit.NSColor?
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func awakeFromNib()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func mouseEntered(with event: AppKit.NSEvent)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func mouseExited(with event: AppKit.NSEvent)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func updateTrackingAreas()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func draw(_ dirtyRect: Foundation.NSRect)
+  @objc deinit
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame frameRect: Foundation.NSRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class FlippedView : AppKit.NSView {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public var isFlipped: Swift.Bool {
+    @objc get
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame frameRect: Foundation.NSRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers open class RangeNumberFormatter : Foundation.NumberFormatter {
+  convenience public init(min: Foundation.NSNumber, max: Foundation.NSNumber)
+  @objc override dynamic open func isPartialStringValid(_ partialString: Swift.String, newEditingString newString: Swift.AutoreleasingUnsafeMutablePointer<Foundation.NSString?>?, errorDescription error: Swift.AutoreleasingUnsafeMutablePointer<Foundation.NSString?>?) -> Swift.Bool
+  @objc override dynamic public init()
+  @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class SearchFieldWithResultsCount : AppKit.NSSearchField {
+  @_Concurrency.MainActor(unsafe) open var resultsCount: Swift.Int {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) open var showResultsCount: Swift.Bool {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) open var matchString: Swift.String {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) open var matchesString: Swift.String {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) open var resultsTextColor: AppKit.NSColor {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func draw(_ dirtyRect: Foundation.NSRect)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame frameRect: Foundation.NSRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+public protocol NibLoadable {
+  static var nibName: Swift.String { get }
+  static func createFromNib(in bundle: Foundation.Bundle) -> Self
+}
+extension AppCommonComponents.NibLoadable {
+  public static var nibName: Swift.String {
+    get
+  }
+  public static func createFromNib(in bundle: Foundation.Bundle) -> Self
+}
+extension AppCommonComponents.NibLoadable where Self : AppKit.NSView {
+  public static func createFromNib() -> Self
+}
+extension AppKit.NSPopover {
+  @_Concurrency.MainActor(unsafe) public static func showViewControllerAsPopover(viewController: AppKit.NSViewController, relativeTo positioningRect: Foundation.NSRect, of positioningView: AppKit.NSView, preferredEdge: Foundation.NSRectEdge, behavior: AppKit.NSPopover.Behavior = .semitransient) -> AppKit.NSPopover?
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class TooltipView : AppKit.NSView, AppCommonComponents.NibLoadable {
+  @_Concurrency.MainActor(unsafe) public var toolTipString: Swift.String {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func awakeFromNib()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame frameRect: Foundation.NSRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class ClickableProgressIndicator : AppKit.NSProgressIndicator {
+  @_Concurrency.MainActor(unsafe) weak open var target: Swift.AnyObject?
+  @_Concurrency.MainActor(unsafe) open var action: ObjectiveC.Selector?
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func mouseDown(with event: AppKit.NSEvent)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame frameRect: Foundation.NSRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+public protocol DismissalStackViewDelegate : AnyObject {
+  func dismissalStackView(dismissalStackView: AppCommonComponents.DismissalStackView, didDismissView view: AppKit.NSView)
+}
+@objc @_inheritsConvenienceInitializers @IBDesignable @_Concurrency.MainActor(unsafe) public class DismissalStackView : AppKit.NSStackView {
+  @_Concurrency.MainActor(unsafe) weak public var draggingDelegate: AppCommonComponents.DismissalStackViewDelegate?
+  @_Concurrency.MainActor(unsafe) public func drag(view: AppKit.NSView, with event: AppKit.NSEvent)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame frameRect: Foundation.NSRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class KeyEquivalentButton : AppKit.NSButton {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var intrinsicContentSize: Foundation.NSSize {
+    @objc get
+  }
+  @_Concurrency.MainActor(unsafe) open var shouldPerformKeyEquivalent: Swift.Bool
+  @_Concurrency.MainActor(unsafe) open var cornerRadius: CoreFoundation.CGFloat {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) open var isCircular: Swift.Bool
+  @_Concurrency.MainActor(unsafe) open var backgroundColor: AppKit.NSColor? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) open var horizontalPadding: CoreFoundation.CGFloat {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func layout()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func performKeyEquivalent(with key: AppKit.NSEvent) -> Swift.Bool
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func mouseDown(with event: AppKit.NSEvent)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame frameRect: Foundation.NSRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+public enum LaunchConfig {
+  public enum Environment {
+    public static let homeDirectory: Swift.String
+    public static let debugging: Swift.String
+  }
+  public enum Arguments {
+    public static let uiTestMode: Swift.String
+  }
+  public static var homeDirectory: Swift.String? {
+    get
+  }
+  public static var uiTestMode: Swift.Bool {
+    get
+  }
+  public static var debugging: Swift.Bool {
+    get
+  }
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class HighlightedButtonCell : AppKit.NSButtonCell {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func drawTitle(_ title: Foundation.NSAttributedString, withFrame frame: Foundation.NSRect, in controlView: AppKit.NSView) -> Foundation.NSRect
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(textCell string: Swift.String)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(imageCell image: AppKit.NSImage?)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init(coder: Foundation.NSCoder)
+  @objc deinit
+}
+public protocol ColorPickerViewDelegate : AnyObject {
+  func colorPickerView(_ sender: AppCommonComponents.ColorPickerView, didChangeColor newColor: AppKit.NSColor)
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @IBDesignable @_Concurrency.MainActor(unsafe) open class ColorPickerView : AppKit.NSView {
+  @_Concurrency.MainActor(unsafe) weak open var delegate: AppCommonComponents.ColorPickerViewDelegate?
+  @_Concurrency.MainActor(unsafe) open var colorValue: AppKit.NSColor {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) open var cornerRadius: CoreFoundation.CGFloat {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) open var borderWidth: CoreFoundation.CGFloat {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) open var borderColor: AppKit.NSColor {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) open var showColorPlateLogo: Swift.Bool {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func awakeFromNib()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func mouseDown(with event: AppKit.NSEvent)
+  @objc deinit
+  @_Concurrency.MainActor(unsafe) open func clear()
+}
+extension AppCommonComponents.ColorPickerView : AppCommonComponents.NibLoaded {
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @IBDesignable @_Concurrency.MainActor(unsafe) open class LabelWithImageView : AppKit.NSView {
+  @_Concurrency.MainActor(unsafe) open var isEnabled: Swift.Bool
+  @_Concurrency.MainActor(unsafe) open var title: Swift.String? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) open var image: AppKit.NSImage? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) open var tintColor: AppKit.NSColor? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) open var textColor: AppKit.NSColor? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) weak open var target: Swift.AnyObject?
+  @_Concurrency.MainActor(unsafe) open var action: ObjectiveC.Selector?
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func mouseDown(with event: AppKit.NSEvent)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func isAccessibilityElement() -> Swift.Bool
+  @objc deinit
+}
+extension AppCommonComponents.LabelWithImageView : AppCommonComponents.NibLoaded {
+}
+extension Foundation.NSMutableAttributedString {
+  public func formatTemplateParameters(withValues values: [Swift.String : Foundation.NSAttributedString])
+}
+public protocol DraggingStackViewDelegate : AnyObject {
+  func draggingStackView(stackView: AppCommonComponents.DraggingStackView, didFinishDraggingView view: AppKit.NSView, dragThreshold: CoreFoundation.CGFloat)
+}
+@objc @_inheritsConvenienceInitializers @IBDesignable @_Concurrency.MainActor(unsafe) public class DraggingStackView : AppKit.NSStackView {
+  @_Concurrency.MainActor(unsafe) weak public var draggingDelegate: AppCommonComponents.DraggingStackViewDelegate?
+  @_Concurrency.MainActor(unsafe) public var reorderEnabled: Swift.Bool
+  @_Concurrency.MainActor(unsafe) public var dragDirection: AppKit.NSUserInterfaceLayoutOrientation {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public func drag(view: AppKit.NSView, with event: AppKit.NSEvent)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame frameRect: Foundation.NSRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class ColorPanel : AppKit.NSColorPanel {
+  @_Concurrency.MainActor(unsafe) public static let sharedInstance: AppCommonComponents.ColorPanel
+  @_Concurrency.MainActor(unsafe) weak open var sourceView: AppKit.NSView?
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(contentRect: Foundation.NSRect, styleMask style: AppKit.NSWindow.StyleMask, backing backingStoreType: AppKit.NSWindow.BackingStoreType, defer flag: Swift.Bool)
+  @objc deinit
+}
+extension AppKit.NSScrollView {
+  @_Concurrency.MainActor(unsafe) public func scrollToView(_ targetView: AppKit.NSView, with spacing: CoreFoundation.CGFloat = 0)
+}
+extension Swift.Collection {
+  public subscript(safe index: Self.Index) -> Self.Element? {
+    get
+  }
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class HoverButton : AppKit.NSButton {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func resetCursorRects()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame frameRect: Foundation.NSRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+public protocol ClickableViewDelegate : AnyObject {
+  func didTapView(_ view: AppCommonComponents.ClickableView)
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class ClickableView : AppKit.NSView {
+  @_Concurrency.MainActor(unsafe) weak open var target: Swift.AnyObject?
+  @_Concurrency.MainActor(unsafe) open var action: ObjectiveC.Selector?
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func mouseDown(with event: AppKit.NSEvent)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame frameRect: Foundation.NSRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+extension Foundation.Date {
+  public var GMTTimeIntervalSince1970: Foundation.TimeInterval {
+    get
+  }
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class ClickableImage : AppKit.NSImageView {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func mouseDown(with event: AppKit.NSEvent)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame frameRect: Foundation.NSRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+extension AppCommonComponents.LogLevel : Swift.Hashable {}
+extension AppCommonComponents.LogLevel : Swift.RawRepresentable {}
+extension AppKit.NSView.ViewSide : Swift.Equatable {}
+extension AppKit.NSView.ViewSide : Swift.Hashable {}
