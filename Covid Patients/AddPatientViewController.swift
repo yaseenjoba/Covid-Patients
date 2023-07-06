@@ -50,7 +50,6 @@ class AddPatientViewController: NSViewController, NSTextFieldDelegate {
         numberOfDays.stringValue = "\(days) days"
     }
     @IBAction func testTypeClicked(_ sender: NSButton){
-        
         patientTestType = TestType(rawValue: sender.tag)
         checkSaveButtonForEnable()
         
@@ -100,9 +99,7 @@ class AddPatientViewController: NSViewController, NSTextFieldDelegate {
             testResultStack.addArrangedSubview(button)
         }
     }
-    private func testTypeClicked(){
-        
-    }
+    
     private func sendDataToParent(_ patient: Patient) {
         delegate?.didReceiveData(patient)
     }

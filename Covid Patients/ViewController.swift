@@ -51,9 +51,19 @@ class ViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSour
     }
     
     @IBAction func textFieldValueChanged(_ sender: NSTextField) {
-        if let value = Int(sender.stringValue) {
-            intervalStepper.integerValue = value
+        guard let value = Int(sender.stringValue) else{
+            refreshInterval.stringValue = "\(intervalStepper.integerValue)"
+            return
         }
+        if value < 0 {
+            refreshInterval.stringValue = "1"
+            intervalStepper.integerValue = 1
+        }
+        if value > 100 {
+            refreshInterval.stringValue = "100"
+            intervalStepper.integerValue = 100
+        }
+        intervalStepper.integerValue = value
         stopRefreshTimer()
         startRefreshTimer()
     }
@@ -84,9 +94,9 @@ class ViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSour
         guard let row = lastRowSelected else{
             return
         }
-        var view: DetailsView = DetailsView.createFromNib()
+        let view: DetailsView = DetailsView.createFromNib()
         view.name = patientViewModel.patients[row].name
-        var viewController = NSViewController()
+        let viewController = NSViewController()
         viewController.view = view
         self.presentAsSheet(viewController)
     }
