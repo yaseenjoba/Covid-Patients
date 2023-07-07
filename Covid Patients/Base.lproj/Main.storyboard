@@ -741,7 +741,7 @@
                                     <constraint firstAttribute="height" constant="21" id="Hfx-wj-hl0"/>
                                     <constraint firstAttribute="width" constant="223" id="KQA-nS-L2l"/>
                                 </constraints>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Enter Name" drawsBackground="YES" id="dCU-MY-keS">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" identifier="nameField" placeholderString="Enter Name" drawsBackground="YES" id="dCU-MY-keS">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -754,10 +754,10 @@
                                 </constraints>
                                 <sliderCell key="cell" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="TYv-yw-lEy"/>
                                 <connections>
-                                    <action selector="SliderChanged:" target="N3V-8z-gpc" id="Ykk-YJ-Qvh"/>
+                                    <action selector="sliderChanged:" target="N3V-8z-gpc" id="oVo-Ta-vxT"/>
                                 </connections>
                             </slider>
-                            <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="13" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PSy-hg-xfK">
+                            <stackView identifier="testTypeStack" distribution="fill" orientation="vertical" alignment="leading" spacing="13" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PSy-hg-xfK">
                                 <rect key="frame" x="174" y="92" width="223" height="74"/>
                                 <subviews>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xAG-pM-Zue">
@@ -810,7 +810,7 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="13" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8DA-AJ-7vh">
+                            <stackView identifier="testResultStack" distribution="fill" orientation="vertical" alignment="leading" spacing="13" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8DA-AJ-7vh">
                                 <rect key="frame" x="174" y="34" width="78" height="45"/>
                                 <subviews>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="UrH-lK-HhU">
@@ -851,7 +851,7 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vZZ-Ke-iN0">
+                            <button identifier="savePatient" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vZZ-Ke-iN0">
                                 <rect key="frame" x="403" y="3" width="64" height="32"/>
                                 <buttonCell key="cell" type="push" title="Save" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="NFN-mH-O7H">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1224,7 +1224,7 @@
                                             <rect key="frame" x="1" y="1" width="333" height="260"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
-                                                <tableView verticalHuggingPriority="750" ambiguous="YES" allowsExpansionToolTips="YES" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" rowHeight="24" usesAutomaticRowHeights="YES" headerView="bfo-FT-yQd" viewBased="YES" id="t0O-Io-Rm4">
+                                                <tableView identifier="patientsTable" verticalHuggingPriority="750" ambiguous="YES" allowsExpansionToolTips="YES" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" rowHeight="24" usesAutomaticRowHeights="YES" headerView="bfo-FT-yQd" viewBased="YES" id="t0O-Io-Rm4">
                                                     <rect key="frame" x="0.0" y="0.0" width="333" height="232"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>

@@ -7,7 +7,7 @@
 
 import Foundation
 
-class PatientViewModel{
+class PatientViewModel {
     // MARK: - Public properties
     public var patients: [Patient] = []
     // MARK: - Private properties
@@ -21,15 +21,15 @@ class PatientViewModel{
         patients = originalData
     }
     // MARK: - Private functions
-    private func addDummyData(){
+    private func addDummyData() {
         originalData.append(Patient(name: "Yaseen", testType: .PCR, testStatus: .negative))
         originalData.append(Patient(name: "Ahmad", testType: .LFTS, testStatus: .negative))
         originalData.append(Patient(name: "Ali", testType: .serology, testStatus: .positve, daysOfSymptoms: 7))
     }
     // MARK: - Public functions
-    func testsFilter(_ allFilters: [TestType] , nigative: Bool){
+    func testsFilter(_ allFilters: [TestType], nigative: Bool) {
         lastFilters = allFilters
-        if allFilters.isEmpty{
+        if allFilters.isEmpty {
             patients = originalData
             return
         }
@@ -45,7 +45,7 @@ class PatientViewModel{
         patients = newFilter
     }
     
-    func filterNegatives(nigative: Bool){
+    func filterNegatives(nigative: Bool) {
         lastNagativeState = nigative
         guard nigative else {
             self.testsFilter(lastFilters, nigative: false)
@@ -58,24 +58,29 @@ class PatientViewModel{
         })
     }
     
-    func deletePatient(at index: Int){
+    func deletePatient(at index: Int) {
         let deletedId = patients[index].id
-        patients = patients.filter({$0.id != deletedId})
-        originalData = originalData.filter({$0.id != deletedId})
+        patients = patients.filter({ $0.id != deletedId })
+        originalData = originalData.filter({ $0.id != deletedId })
     }
     
-    func addPatient(_ patient: Patient){
+    func addPatient(_ patient: Patient) {
         originalData.append(patient)
         testsFilter(lastFilters, nigative: lastNagativeState)
         
     }
-    func updateName(newValue: String , at: Int){
-        let updatedPatientId = patients[at].id
-        patients[at].name = newValue
-        for patient in originalData{
-            if patient.id == updatedPatientId{
-                patient.name = newValue
+    func updateName(newValue: String, atIndex: Int) {
+        let updatedPatientId = patients[atIndex].id
+        patients[atIndex].name = newValue
+        originalData = originalData.map { patient in
+            if patient.id == updatedPatientId {
+                let updatedPatient = patient
+                updatedPatient.name = newValue
+                return updatedPatient
+            } else {
+                return patient
             }
         }
+        
     }
 }

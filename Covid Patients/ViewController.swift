@@ -24,9 +24,9 @@ class ViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSour
     @IBOutlet private weak var refreshType: NSPopUpButton!
     // MARK: - Private properties
     private var refreshOptions = ["Auto Refresh", "Manual Refresh"]
-    private lazy var addPatientViewController: AddPatientViewController = {
+    private lazy var addPatientViewController: AddPatientViewController? = {
         let storyboard = NSStoryboard(name: "Main", bundle: nil)
-        let viewController = storyboard.instantiateController(withIdentifier: "AddPatientViewController") as! AddPatientViewController
+        let viewController = storyboard.instantiateController(withIdentifier: "AddPatientViewController") as? AddPatientViewController
         return viewController
     }()
     private var refreshTimer: Timer?
@@ -51,7 +51,7 @@ class ViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSour
     }
     
     @IBAction func textFieldValueChanged(_ sender: NSTextField) {
-        guard let value = Int(sender.stringValue) else{
+        guard let value = Int(sender.stringValue) else {
             refreshInterval.stringValue = "\(intervalStepper.integerValue)"
             return
         }
@@ -81,17 +81,17 @@ class ViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSour
     @IBAction func refreshValueChcanged(_ sender: NSPopUpButton) {
         if let selectedItem = sender.selectedItem {
             let selectedOption = selectedItem.title
-            if selectedOption == refreshOptions[1]{
+            if selectedOption == refreshOptions[1] {
                 refreshIntervalStack.isHidden = true
                 stopRefreshTimer()
-            }else{
+            } else {
                 startRefreshTimer()
                 refreshIntervalStack.isHidden = false
             }
         }
     }
     @IBAction func detailsClicked(_ sender: NSButton) {
-        guard let row = lastRowSelected else{
+        guard let row = lastRowSelected else {
             return
         }
         let view: DetailsView = DetailsView.createFromNib()
@@ -110,7 +110,7 @@ class ViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSour
         let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier("CustomCell"), owner: self) as? CustomCell
         cell?.delegate = self
         cell?.datasource = self
-        switch tableColumn?.identifier{
+        switch tableColumn?.identifier {
         case NSUserInterfaceItemIdentifier("Name"):
             cell?.nameCellSetup(patient: patientViewModel.patients[row])
             return cell
@@ -126,7 +126,6 @@ class ViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSour
         
     }
     
-    //update
     func tableViewSelectionDidChange(_ notification: Notification) {
         let selectedRow = tableView.selectedRow
         lastRowSelected = selectedRow
@@ -135,31 +134,30 @@ class ViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSour
             return
         }
         addDeleteSegment.setEnabled(true, forSegment: 1)
-        if patientViewModel.patients[selectedRow].testStatus == .positve{
-            if let days = patientViewModel.patients[selectedRow].daysOfSymptoms{
+        if patientViewModel.patients[selectedRow].testStatus == .positve {
+            if let days = patientViewModel.patients[selectedRow].daysOfSymptoms {
                 progressStack.isHidden = false
                 progressLable.stringValue = "\(patientViewModel.patients[selectedRow].name)'s Recovery Progress"
                 progressBar.doubleValue = (Double(days) / 14.0) * 100.0
             }
-        }else{
+        } else {
             progressStack.isHidden = true
         }
         
     }
     
-    @objc func addDeletePatient(_ sender: NSSegmentedControl) {
+    @objc
+    func addDeletePatient(_ sender: NSSegmentedControl) {
         let selectedSegment = sender.selectedSegment
         switch selectedSegment {
         case 0:
             openAddWindow()
-            break
         case 1:
-            guard lastRowSelected != nil else{
+            guard lastRowSelected != nil else {
                 return
             }
             deletePatinet()
             lastRowSelected = -1
-            break
         default:
             break
         }
@@ -167,7 +165,7 @@ class ViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSour
     }
     
     // MARK: - Private functions
-    private func viewSetup(){
+    private func viewSetup() {
         delegatesSetup()
         refreshSectionSetup()
         filtersSectionSetup()
@@ -175,7 +173,7 @@ class ViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSour
         startRefreshTimer()
     }
     private func startRefreshTimer() {
-        guard let value = Double(refreshInterval.stringValue) else{
+        guard let value = Double(refreshInterval.stringValue) else {
             return
         }
         let interval: TimeInterval = value
@@ -187,14 +185,15 @@ class ViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSour
         refreshTimer = nil
     }
     
-    @objc private func refreshTableView() {
+    @objc
+    private func refreshTableView() {
         tableView.reloadData()
         progressStack.isHidden = true
         addDeleteSegment.setEnabled(false, forSegment: 1)
     }
     
     private func deletePatinet() {
-        guard let row = lastRowSelected,  row != -1 else {return}
+        guard let row = lastRowSelected, row != -1 else {return}
         let alert = NSAlert()
         alert.messageText = "Are you sure you want to delete patient \(patientViewModel.patients[row].name)?"
         alert.informativeText = "This can't be undone"
@@ -215,16 +214,17 @@ class ViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSour
     }
     
     private func openAddWindow() {
-        presentAsSheet(addPatientViewController)
+        guard let view = addPatientViewController else { return }
+        presentAsSheet(view)
     }
     
-    private func delegatesSetup(){
+    private func delegatesSetup() {
         tableView.dataSource = self
         tableView.delegate = self
-        addPatientViewController.delegate = self
+        addPatientViewController?.delegate = self
     }
     
-    private func refreshSectionSetup(){
+    private func refreshSectionSetup() {
         intervalStepper.minValue = 1
         refreshData.removeAllItems()
         refreshData.addItems(withTitles: refreshOptions)
@@ -232,7 +232,7 @@ class ViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSour
         refreshIntervalStack.isHidden = true
     }
     
-    private func filtersSectionSetup(){
+    private func filtersSectionSetup() {
         testTypeFilterStack.arrangedSubviews.forEach({ $0.removeFromSuperview() })
         for test in TestType.allCases {
             let label = test.longText + " (\(test.shortText))"
@@ -244,7 +244,7 @@ class ViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSour
         }
     }
     
-    private func addDeleteSectionSetup(){
+    private func addDeleteSectionSetup() {
         addDeleteSegment.setEnabled(false, forSegment: 1)
         addDeleteSegment.action = #selector(addDeletePatient(_:))
         progressStack.isHidden = true
@@ -255,9 +255,9 @@ class ViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSour
         // Handle button click event here
         var allFilters: [TestType] = []
         for subview in testTypeFilterStack.arrangedSubviews {
-            if let checkbox = subview as? NSButton{
+            if let checkbox = subview as? NSButton {
                 let isChecked = checkbox.state == .on
-                if isChecked, let test = TestType.allCases.first(where: { $0.rawValue == checkbox.tag}) {
+                if isChecked, let test = TestType.allCases.first(where: { $0.rawValue == checkbox.tag }) {
                     allFilters.append(test)
                 }
                 
@@ -274,14 +274,12 @@ extension ViewController: AddPatientViewControllerDelegate {
     }
 }
 
-extension ViewController: CustomCellDelegate{
+extension ViewController: CustomCellDelegate {
     func updatePatient(newName: String, index: Int) {
-        patientViewModel.updateName(newValue: newName, at: index)
+        patientViewModel.updateName(newValue: newName, atIndex: index)
     }
-    
-    
 }
-extension ViewController: CustomCellDatasource{
+extension ViewController: CustomCellDatasource {
     func getRowNumberForTextField(textFiled: NSTextField) -> Int {
         return tableView.row(for: textFiled)
     }

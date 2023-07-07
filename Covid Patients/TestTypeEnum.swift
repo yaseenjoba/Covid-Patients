@@ -7,12 +7,12 @@
 
 import Foundation
 
-enum TestType: Int, CaseIterable{
+enum TestType: Int, CaseIterable {
     case PCR
     case LFTS
     case serology
     
-    var longText: String{
+    var longText: String {
         switch self {
         case .PCR:
             return "Polymerase chain reaction"
@@ -22,7 +22,7 @@ enum TestType: Int, CaseIterable{
             return "Antibody"
         }
     }
-    var shortText: String{
+    var shortText: String {
         switch self {
         case .PCR:
             return "PCR"

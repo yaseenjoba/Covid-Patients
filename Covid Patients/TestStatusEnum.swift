@@ -6,12 +6,12 @@
 //
 
 import Foundation
-enum TestStatus: Int, CaseIterable{
+enum TestStatus: Int, CaseIterable {
     case positve
     case negative
     
-    var text: String{
-        switch self{
+    var text: String {
+        switch self {
         case .positve:
             return "Positve"
         case .negative:

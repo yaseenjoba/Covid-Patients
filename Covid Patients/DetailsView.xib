@@ -36,7 +36,7 @@
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                     <connections>
-                        <action selector="CloseWindow:" target="c22-O7-iKe" id="CbG-8M-9wA"/>
+                        <action selector="closeWindow:" target="c22-O7-iKe" id="X0r-ZB-ayk"/>
                     </connections>
                 </button>
             </subviews>

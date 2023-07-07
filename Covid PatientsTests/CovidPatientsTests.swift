@@ -7,7 +7,7 @@
 
 import XCTest
 @testable import Covid_Patients
-final class Covid_PatientsTests: XCTestCase {
+final class CovidPatientsTests: XCTestCase {
 
     var sut: PatientViewModel!
     override func setUpWithError() throws {
@@ -21,13 +21,13 @@ final class Covid_PatientsTests: XCTestCase {
         sut = nil
         try super.tearDownWithError()
     }
-    func testAddingPatient() throws{
+    func testAddingPatient() throws {
         try XCTSkipUnless(
             sut != nil,
             "There is No patient!")
-        let patient = Patient(name:"YASEEN", testType: .PCR, testStatus: .negative)
+        let patient = Patient(name: "YASEEN", testType: .PCR, testStatus: .negative)
         sut.addPatient(patient)
-        XCTAssertEqual(sut.patients.contains(where: {$0.id == patient.id}), true , "The patient has't been addded");
+        XCTAssertEqual(sut.patients.contains(where: { $0.id == patient.id }), true, "The patient has't been addded")
         
     }
     func testPerformanceExample() throws {

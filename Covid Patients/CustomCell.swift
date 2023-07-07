@@ -6,11 +6,11 @@
 //
 
 import Cocoa
-protocol CustomCellDelegate: AnyObject{
+protocol CustomCellDelegate: AnyObject {
     
     func updatePatient(newName: String, index: Int)
 }
-protocol CustomCellDatasource: AnyObject{
+protocol CustomCellDatasource: AnyObject {
     
     func getRowNumberForTextField(textFiled: NSTextField) -> Int
 }
@@ -28,25 +28,27 @@ class CustomCell: NSTableCellView, NSTextFieldDelegate {
         // Drawing code here.
     }
     // MARK: - Public functions
-    func nameCellSetup(patient: Patient){
+    func nameCellSetup(patient: Patient) {
         self.text.stringValue = patient.name
-        self.image.image = patient.testStatus == .positve ? NSImage(named: "positive"):  NSImage(named: "negative")
+        let positveImage = NSImage(imageLiteralResourceName: "positive")
+        let negativeImage = NSImage(imageLiteralResourceName: "negative")
+        self.image.image = patient.testStatus == .positve ? positveImage : negativeImage
         self.text.isEditable = true
         self.text.delegate = self
         self.text.maximumNumberOfLines = 0 // Allow multiple lines
     }
     
-    func typeCellSetup(patient: Patient){
+    func typeCellSetup(patient: Patient) {
         self.text.stringValue = patient.testType.shortText
         self.image.isHidden = true
     }
     
-    func statusCellSetup(patient: Patient){
+    func statusCellSetup(patient: Patient) {
         var testStatusString = ""
         testStatusString = patient.testStatus.text
-        if let days = patient.daysOfSymptoms{
-            if patient.testStatus == .positve{
-                testStatusString = testStatusString + " (\(days) days)"
+        if let days = patient.daysOfSymptoms {
+            if patient.testStatus == .positve {
+                testStatusString += " (\(days) days)"
             }
         }
         self.text.stringValue = testStatusString
@@ -56,12 +58,10 @@ class CustomCell: NSTableCellView, NSTextFieldDelegate {
     func controlTextDidEndEditing(_ obj: Notification) {
         if let textField = obj.object as? NSTextField {
             let row = datasource?.getRowNumberForTextField(textFiled: textField)
-            guard let index = row ,  index >= 0 else {
+            guard let index = row, index >= 0 else {
                 return
             }
-            delegate?.updatePatient(newName: textField.stringValue , index: index)
+            delegate?.updatePatient(newName: textField.stringValue, index: index)
         }
     }
-    
-    
 }

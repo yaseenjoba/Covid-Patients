@@ -6,7 +6,7 @@
 //
 
 import Foundation
-class Patient{
+class Patient {
     // MARK: - Public properties
     var id: UUID
     var name: String

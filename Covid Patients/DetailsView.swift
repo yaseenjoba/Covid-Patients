@@ -11,7 +11,7 @@ import AppCommonComponents
 class DetailsView: NSView, NibLoadable {
 
     var name: String = ""{
-        didSet{
+        didSet {
             patientName.stringValue = name
         }
     }
@@ -24,7 +24,7 @@ class DetailsView: NSView, NibLoadable {
         // Drawing code here.
     }
     
-    @IBAction func CloseWindow(_ sender: NSButton) {
+    @IBAction func closeWindow(_ sender: NSButton) {
         window?.close()
     }
 }

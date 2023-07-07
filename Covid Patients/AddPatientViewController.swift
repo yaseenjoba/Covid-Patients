@@ -7,7 +7,7 @@
 
 import Cocoa
 
-protocol AddPatientViewControllerDelegate: AnyObject{
+protocol AddPatientViewControllerDelegate: AnyObject {
     func didReceiveData(_ patient: Patient)
 }
 
@@ -33,28 +33,28 @@ class AddPatientViewController: NSViewController, NSTextFieldDelegate {
     override func viewWillAppear() {
         patientName.stringValue = ""
         symptomsTime.doubleValue = 50
-        for choice in testTypeStack.arrangedSubviews{
+        for choice in testTypeStack.arrangedSubviews {
             let radio = choice as? NSButton
             radio?.state = .off
         }
-        for choice in testResultStack.arrangedSubviews{
+        for choice in testResultStack.arrangedSubviews {
             let radio = choice as? NSButton
             radio?.state = .off
         }
         savePatientButton.isEnabled = false
     }
     // MARK: - IBActions
-    @IBAction func SliderChanged(_ sender: NSSlider) {
+    @IBAction func sliderChanged(_ sender: NSSlider) {
         let sliderValue = sender.doubleValue
         let days = Int(sliderValue * 14.0 / 100.0)
         numberOfDays.stringValue = "\(days) days"
     }
-    @IBAction func testTypeClicked(_ sender: NSButton){
+    @IBAction func testTypeClicked(_ sender: NSButton) {
         patientTestType = TestType(rawValue: sender.tag)
         checkSaveButtonForEnable()
         
     }
-    @IBAction func testRessultClicked(_ sender: NSButton){
+    @IBAction func testRessultClicked(_ sender: NSButton) {
         patientTestResult = TestStatus(rawValue: sender.tag)
         checkSaveButtonForEnable()
     }
@@ -66,7 +66,7 @@ class AddPatientViewController: NSViewController, NSTextFieldDelegate {
     }
     
     @IBAction func save(_ sender: NSButton) {
-        guard let testType = patientTestType, let testResult = patientTestResult, !patientName.stringValue.isEmpty else{
+        guard let testType = patientTestType, let testResult = patientTestResult, !patientName.stringValue.isEmpty else {
             return
         }
         let sliderValue = symptomsTime.doubleValue
@@ -80,22 +80,24 @@ class AddPatientViewController: NSViewController, NSTextFieldDelegate {
         dismiss(self)
     }
     // MARK: - Private functions
-    private func addButtons(){
+    private func addButtons() {
         testResultStack.arrangedSubviews.forEach({ $0.removeFromSuperview() })
         testTypeStack.arrangedSubviews.forEach({ $0.removeFromSuperview() })
         for test in TestType.allCases {
             let label = test.longText + " (\(test.shortText))"
-            let button = NSButton(title: label , target: self, action: #selector(testTypeClicked(_:)))
+            let button = NSButton(title: label, target: self, action: #selector(testTypeClicked(_:)))
             button.setButtonType(.radio)
             button.tag = test.rawValue
             button.translatesAutoresizingMaskIntoConstraints = false
+            button.identifier = NSUserInterfaceItemIdentifier(test.shortText)
             testTypeStack.addArrangedSubview(button)
         }
-        for state in TestStatus.allCases{
+        for state in TestStatus.allCases {
             let button = NSButton(title: state.text, target: self, action: #selector(testRessultClicked(_:)))
             button.setButtonType(.radio)
             button.tag = state.rawValue
             button.translatesAutoresizingMaskIntoConstraints = false
+            button.identifier = NSUserInterfaceItemIdentifier(state.text)
             testResultStack.addArrangedSubview(button)
         }
     }
@@ -104,8 +106,8 @@ class AddPatientViewController: NSViewController, NSTextFieldDelegate {
         delegate?.didReceiveData(patient)
     }
     
-    private func checkSaveButtonForEnable(){
-        guard !patientName.stringValue.isEmpty, patientTestType != nil, patientTestResult != nil else{
+    private func checkSaveButtonForEnable() {
+        guard !patientName.stringValue.isEmpty, patientTestType != nil, patientTestResult != nil else {
             savePatientButton.isEnabled = false
             return
         }
