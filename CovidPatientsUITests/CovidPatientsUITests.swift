@@ -7,7 +7,7 @@
 
 import XCTest
 @testable import Covid_Patients
-final class CovidPatientsUITests: XCTestCase {
+final class PatientsViewModelTests: XCTestCase {
     var app: XCUIApplication!
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -47,14 +47,15 @@ final class CovidPatientsUITests: XCTestCase {
         addWindow.buttons["savePatient"].click()
         Thread.sleep(forTimeInterval: 2.0)
         XCTAssertEqual(oldnNumberOfRows + 1, tableView.tableRows.count)
+        let rowIndex = tableView.tableRows.count
+        let specificCell = tableView.cells.element(boundBy: rowIndex)
+        XCTAssertTrue(specificCell.exists)
+        let text = specificCell.textFields.firstMatch
+        guard let patientName = text.value as? String else {
+            XCTFail("Can't find the added patient")
+            return
+        }
+        XCTAssertEqual(patientName, "Amr", "Wrong patient added!")
     }
     
-    func testLaunchPerformance() throws {
-        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {
-            // This measures how long it takes to launch your application.
-            measure(metrics: [XCTApplicationLaunchMetric()]) {
-                XCUIApplication().launch()
-            }
-        }
-    }
 }

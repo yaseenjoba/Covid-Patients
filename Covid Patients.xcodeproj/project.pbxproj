@@ -21,7 +21,7 @@
 		3059E0AB2A55545E00211F76 /* AppCommonComponents.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3059E0A92A55545E00211F76 /* AppCommonComponents.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3059E0AE2A5573A400211F76 /* DetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3059E0AD2A5573A400211F76 /* DetailsView.xib */; };
 		3059E0B02A5573B900211F76 /* DetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3059E0AF2A5573B900211F76 /* DetailsView.swift */; };
-		3059E0B82A558ACA00211F76 /* CovidPatientsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3059E0B72A558ACA00211F76 /* CovidPatientsTests.swift */; };
+		3059E0B82A558ACA00211F76 /* PatientsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3059E0B72A558ACA00211F76 /* PatientsViewModelTests.swift */; };
 		3059E0C52A559D0500211F76 /* CovidPatientsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3059E0C42A559D0500211F76 /* CovidPatientsUITests.swift */; };
 		3059E0C72A559D0500211F76 /* CovidPatientsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3059E0C62A559D0500211F76 /* CovidPatientsUITestsLaunchTests.swift */; };
 /* End PBXBuildFile section */
@@ -81,7 +81,7 @@
 		3059E0AD2A5573A400211F76 /* DetailsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailsView.xib; sourceTree = "<group>"; };
 		3059E0AF2A5573B900211F76 /* DetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsView.swift; sourceTree = "<group>"; };
 		3059E0B52A558ACA00211F76 /* Covid PatientsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Covid PatientsTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		3059E0B72A558ACA00211F76 /* CovidPatientsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CovidPatientsTests.swift; sourceTree = "<group>"; };
+		3059E0B72A558ACA00211F76 /* PatientsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientsViewModelTests.swift; sourceTree = "<group>"; };
 		3059E0C22A559D0500211F76 /* Covid PatientsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Covid PatientsUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3059E0C42A559D0500211F76 /* CovidPatientsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CovidPatientsUITests.swift; sourceTree = "<group>"; };
 		3059E0C62A559D0500211F76 /* CovidPatientsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CovidPatientsUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -125,8 +125,8 @@
 			isa = PBXGroup;
 			children = (
 				305762832A4F474C0089C9F9 /* Covid Patients */,
-				3059E0B62A558ACA00211F76 /* Covid PatientsTests */,
-				3059E0C32A559D0500211F76 /* Covid PatientsUITests */,
+				3059E0B62A558ACA00211F76 /* PatientsViewModelTests */,
+				3059E0C32A559D0500211F76 /* CovidPatientsUITests */,
 				305762822A4F474C0089C9F9 /* Products */,
 				3059E0A82A55545D00211F76 /* Frameworks */,
 			);
@@ -171,21 +171,21 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		3059E0B62A558ACA00211F76 /* Covid PatientsTests */ = {
+		3059E0B62A558ACA00211F76 /* PatientsViewModelTests */ = {
 			isa = PBXGroup;
 			children = (
-				3059E0B72A558ACA00211F76 /* CovidPatientsTests.swift */,
+				3059E0B72A558ACA00211F76 /* PatientsViewModelTests.swift */,
 			);
-			path = "Covid PatientsTests";
+			path = PatientsViewModelTests;
 			sourceTree = "<group>";
 		};
-		3059E0C32A559D0500211F76 /* Covid PatientsUITests */ = {
+		3059E0C32A559D0500211F76 /* CovidPatientsUITests */ = {
 			isa = PBXGroup;
 			children = (
 				3059E0C42A559D0500211F76 /* CovidPatientsUITests.swift */,
 				3059E0C62A559D0500211F76 /* CovidPatientsUITestsLaunchTests.swift */,
 			);
-			path = "Covid PatientsUITests";
+			path = CovidPatientsUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -387,7 +387,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3059E0B82A558ACA00211F76 /* CovidPatientsTests.swift in Sources */,
+				3059E0B82A558ACA00211F76 /* PatientsViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

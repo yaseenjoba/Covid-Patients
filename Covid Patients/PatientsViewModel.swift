@@ -27,7 +27,7 @@ class PatientViewModel {
         originalData.append(Patient(name: "Ali", testType: .serology, testStatus: .positve, daysOfSymptoms: 7))
     }
     // MARK: - Public functions
-    func testsFilter(_ allFilters: [TestType], nigative: Bool) {
+    func applyTestsFilters(_ allFilters: [TestType], nigative: Bool) {
         lastFilters = allFilters
         if allFilters.isEmpty {
             patients = originalData
@@ -48,7 +48,7 @@ class PatientViewModel {
     func filterNegatives(nigative: Bool) {
         lastNagativeState = nigative
         guard nigative else {
-            self.testsFilter(lastFilters, nigative: false)
+            self.applyTestsFilters(lastFilters, nigative: false)
             return
         }
         
@@ -66,10 +66,10 @@ class PatientViewModel {
     
     func addPatient(_ patient: Patient) {
         originalData.append(patient)
-        testsFilter(lastFilters, nigative: lastNagativeState)
-        
+        applyTestsFilters(lastFilters, nigative: lastNagativeState)
     }
-    func updateName(newValue: String, atIndex: Int) {
+    
+    func updatePatientName(newValue: String, atIndex: Int) {
         let updatedPatientId = patients[atIndex].id
         patients[atIndex].name = newValue
         originalData = originalData.map { patient in

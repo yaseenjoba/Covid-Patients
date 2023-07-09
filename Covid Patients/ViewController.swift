@@ -263,7 +263,7 @@ class ViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSour
                 
             }
         }
-        patientViewModel.testsFilter(allFilters, nigative: negativeFilterSwitch.state == .on)
+        patientViewModel.applyTestsFilters(allFilters, nigative: negativeFilterSwitch.state == .on)
         refreshTableView()
     }
 }
@@ -276,7 +276,7 @@ extension ViewController: AddPatientViewControllerDelegate {
 
 extension ViewController: CustomCellDelegate {
     func updatePatient(newName: String, index: Int) {
-        patientViewModel.updateName(newValue: newName, atIndex: index)
+        patientViewModel.updatePatientName(newValue: newName, atIndex: index)
     }
 }
 extension ViewController: CustomCellDatasource {
