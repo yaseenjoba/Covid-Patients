@@ -6,6 +6,7 @@
 //
 
 import Foundation
+// FIXME: - maybe a better name since this is to general, CovidTestResult?
 enum TestStatus: Int, CaseIterable{
     case positve
     case negative

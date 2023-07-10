@@ -26,24 +26,28 @@ class ViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSour
     private var refreshOptions = ["Auto Refresh", "Manual Refresh"]
     private lazy var addPatientViewController: AddPatientViewController = {
         let storyboard = NSStoryboard(name: "Main", bundle: nil)
+        // FIXME: - never force unwrap, use guard statments or return optionals
         let viewController = storyboard.instantiateController(withIdentifier: "AddPatientViewController") as! AddPatientViewController
         return viewController
     }()
     private var refreshTimer: Timer?
     private var lastRowSelected: Int?
     private var patientViewModel: PatientViewModel = PatientViewModel()
+    // FIXME: - fix spacing
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         viewSetup()
-        
+        // FIXME: - spacing
     }
     
     deinit {
         stopRefreshTimer()
     }
+    
     // MARK: - IBActions
     @IBAction func stepperValueChanged(_ sender: NSStepper) {
+        // FIXME: - what about using delegates
         let newValue = sender.integerValue
         refreshInterval.stringValue = "\(newValue)"
         stopRefreshTimer()
@@ -51,6 +55,7 @@ class ViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSour
     }
     
     @IBAction func textFieldValueChanged(_ sender: NSTextField) {
+        // FIXME: - better naming, which textField didChange its values
         if let value = Int(sender.stringValue) {
             intervalStepper.integerValue = value
         }
@@ -69,6 +74,7 @@ class ViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSour
     }
     
     @IBAction func refreshValueChcanged(_ sender: NSPopUpButton) {
+        // FIXME: - use guard, better syntax and cleaner code + avoids nested ifs
         if let selectedItem = sender.selectedItem {
             let selectedOption = selectedItem.title
             if selectedOption == refreshOptions[1]{
@@ -82,15 +88,19 @@ class ViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSour
     }
     // MARK: - Public functions
     func numberOfRows(in tableView: NSTableView) -> Int {
+        // FIXME: - use computed variables // FIXME: -
         return patientViewModel.patients.count
     }
     
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         
+        // FIXME: - use extension to get cell id
         let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier("CustomCell"), owner: self) as? CustomCell
         cell?.delegate = self
         cell?.datasource = self
         switch tableColumn?.identifier{
+            // FIXME: - ids should be moved into a static config
+            // FIXME: - maybe add an extension to make the code cleaer to return columnID or use it's rawValue -id.rawValue-
         case NSUserInterfaceItemIdentifier("Name"):
             cell?.nameCellSetup(patient: patientViewModel.patients[row])
             return cell
@@ -215,6 +225,7 @@ class ViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSour
     private func filtersSectionSetup(){
         testTypeFilterStack.arrangedSubviews.forEach({ $0.removeFromSuperview() })
         for test in TestType.allCases {
+            // FIXME: - make sure to resolve warnings
             var label = test.longText + " (\(test.shortText))"
             let button = NSButton(title: label, target: self, action: nil)
             button.setButtonType(.switch)

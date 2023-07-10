@@ -6,6 +6,7 @@
 //
 
 import Foundation
+// FIXME: - should be a stuct 
 class Patient{
     // MARK: - Public properties
     var id: UUID

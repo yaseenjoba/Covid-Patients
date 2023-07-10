@@ -27,6 +27,7 @@ class PatientViewModel{
         originalData.append(Patient(name: "Ali", testType: .serology, testStatus: .positve, daysOfSymptoms: 7))
     }
     // MARK: - Public functions
+    // FIXME: - should use better names, applyFilters?
     func testsFilter(_ allFilters: [TestType] , nigative: Bool){
         lastFilters = allFilters
         if allFilters.isEmpty{
@@ -45,6 +46,7 @@ class PatientViewModel{
         patients = newFilter
     }
     
+    // FIXME: - better naming, applyFilters
     func filterNegatives(nigative: Bool){
         lastNagativeState = nigative
         guard nigative else {
@@ -59,7 +61,9 @@ class PatientViewModel{
     }
     
     func deletePatient(at index: Int){
+        // FIXME: - make sure to validate index
         let deletedId = patients[index].id
+        // FIXME: - filter is not in the correct context, the item should be removed
         patients = patients.filter({$0.id != deletedId})
         originalData = originalData.filter({$0.id != deletedId})
     }
@@ -70,8 +74,10 @@ class PatientViewModel{
         
     }
     func updateName(newValue: String , at: Int){
+        // FIXME: - make sure to validate index
         let updatedPatientId = patients[at].id
         patients[at].name = newValue
+        // FIXME: - get first item index, based on id and then update the value
         for patient in originalData{
             if patient.id == updatedPatientId{
                 patient.name = newValue

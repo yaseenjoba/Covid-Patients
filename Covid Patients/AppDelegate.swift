@@ -11,7 +11,9 @@ import Cocoa
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     
-
+    // FIXME: - fix spacing
+    // FIXME: - where is linter, make sure to add it and resolve items
+    // FIXME: - make sure to use correct folder structure
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application

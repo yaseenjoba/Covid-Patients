@@ -7,6 +7,7 @@
 
 import Foundation
 
+// FIXME: - maybe a better name to as this to general, CovidTestType?
 enum TestType: Int, CaseIterable{
     case PCR
     case LFTS
